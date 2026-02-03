@@ -51,6 +51,13 @@ namespace VMAP
         return memcmp(dest, compare, len) == 0;
     }
 
+    bool readChunkOneOf(FILE* rf, char* dest, const char* magic1, const char* magic2, uint32_t len)
+    {
+        if (fread(dest, sizeof(char), len, rf) != len)
+            return false;
+        return memcmp(dest, magic1, len) == 0 || memcmp(dest, magic2, len) == 0;
+    }
+
     Vector3 ModelPosition::transform(const Vector3& pIn) const
     {
         Vector3 out = pIn * iScale;
@@ -623,7 +630,13 @@ namespace VMAP
         // Function fread does not terminate string ident
         READ_OR_RETURN(&ident, 8);
 
-        CMP_OR_RETURN(ident, RAW_VMAP_MAGIC);
+        // Accept AscEmu (VMAP041) or Trinity/Pandaria (VMAP043) raw vmap
+        if (memcmp(ident, RAW_VMAP_MAGIC, 8) != 0 && memcmp(ident, RAW_VMAP_MAGIC_TRINITY, 8) != 0)
+        {
+            fclose(rf);
+            printf("cmpfail raw vmap magic, got %.8s\n", ident);
+            return false;
+        }
 
         // we have to read one int. This is needed during the export and we have to skip it here
         uint32_t tempNVectors;

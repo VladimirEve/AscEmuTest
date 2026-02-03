@@ -27,11 +27,14 @@
 namespace VMAP
 {
     const char VMAP_MAGIC[] = "VMAP_4.1";
-    const char RAW_VMAP_MAGIC[] = "VMAP041";                // used in extracted vmap files with raw data
+    const char VMAP_MAGIC_TRINITY[] = "VMAP_4.3";           // Trinity/Pandaria vmap (accept for compatibility)
+    const char RAW_VMAP_MAGIC[] = "VMAP041";
+    const char RAW_VMAP_MAGIC_TRINITY[] = "VMAP043";        // Trinity/Pandaria raw vmap
     const char GAMEOBJECT_MODELS[] = "GameObjectModels.dtree";
 
-    // defined in TileAssembler.cpp currently...
     bool readChunk(FILE* rf, char *dest, const char *compare, uint32_t len);
+    /// Read len bytes into dest; return true if they match magic1 or magic2 (for Trinity compatibility).
+    bool readChunkOneOf(FILE* rf, char* dest, const char* magic1, const char* magic2, uint32_t len);
 }
 
 #endif

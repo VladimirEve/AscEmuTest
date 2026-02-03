@@ -39,7 +39,7 @@ namespace AscEmu::Packets
 #if VERSION_STRING != Mop
             packet << mapId << location.x << location.y << location.z << location.o;
 #elif VERSION_STRING == Mop
-            packet << location.x << location.o << location.y << mapId << location.z;
+            packet << mapId << location.x << location.y << location.z << location.o;
 #endif
             return true;
         }

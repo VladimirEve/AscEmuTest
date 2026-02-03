@@ -1,4 +1,4 @@
-﻿# ![logo](http://ascemu.org/images/logo.png)
+# ![logo](http://ascemu.org/images/logo.png)
 
 Master                                                                       | Development
 :--------------------------------------------------------------------------: | :-------------------------------------------------------------------------------:
@@ -28,7 +28,9 @@ Description       | Classic    | TBC        | WotLK      | Cata       | MoP
 Authentification  | ✔️         | ✔️         | ✔️         | ✔️         | ✔️
 Worldsocket       | ✔️         | ✔️         | ✔️         | ✔️         | ✔️
 Char Enum         | ✔️         | ✔️         | ✔️         | ✔️         | ✔️
-Log into world    | ✔️         | ✔️         | ✔️         | ✔️         | ❌
+Log into world    | ✔️         | ✔️         | ✔️         | ✔️         | ✔️
+
+**MoP (5.4.8):** Entering the world and Pandaren character creation are implemented. Apply the world DB update `sql/world/updates/20260203-00_pandaren_playercreateinfo.sql` (playercreateinfo, playercreateinfo_items, worldmap_info for The Wandering Isle) so that Pandaren can log in and spawn on map 860.
 
 
 ## Contributing
@@ -57,6 +59,8 @@ HowTo install - detailed guides on our wiki.
 * [Linux](https://ascemu.github.io/Wiki/docs/installation/linux/)
 * [macOS](https://ascemu.github.io/Wiki/docs/installation/macOS/)
 * [Windows](https://ascemu.github.io/Wiki/docs/installation/windows/)
+
+**Windows (build_ascemu.bat):** Requires **OpenSSL 3.6.0.0** (Win64) and **MySQL 8.x** (e.g. 8.4). MySQL is not in the repo: place headers and libs in the project root as `mysql/include/` and `mysql/lib/` (with `libmysql.lib`), or set `MYSQL_ROOT` in the script to your MySQL install path.
 
 ## Links
 * [Web](http://www.ascemu.org)

@@ -580,8 +580,8 @@ namespace VMAP
         bool result = true;
         uint32_t chunkSize = 0;
         uint32_t count = 0;
-        char chunk[8];                          // Ignore the added magic header
-        if (!readChunk(rf, chunk, VMAP_MAGIC, 8)) result = false;
+        char chunk[8];                          // Ignore the added magic header (AscEmu 4.1 or Trinity 4.3)
+        if (!readChunkOneOf(rf, chunk, VMAP_MAGIC, VMAP_MAGIC_TRINITY, 8)) result = false;
 
         if (result && !readChunk(rf, chunk, "WMOD", 4)) result = false;
         if (result && fread(&chunkSize, sizeof(uint32_t), 1, rf) != 1) result = false;

@@ -25,6 +25,9 @@ class TerrainHolder;
 class TerrainTile;
 class LocationVector;
 
+/// Trinity/Pandaria map extractor uses this version (accept both for compatibility)
+constexpr uint32_t MAP_VERSION_TRINITY = 10u;
+
 struct TileMapHeader
 {
     uint32_t mapMagic;
@@ -167,7 +170,7 @@ public:
 
     void loadAreaData(FILE* f, TileMapHeader& header);
     void loadHeightData(FILE* f, TileMapHeader& header);
-    void loadLiquidData(FILE* f, TileMapHeader& header);
+    void loadLiquidData(FILE* f, TileMapHeader& header, bool trinityLiquidFormat = false);
     void loadHolesData(FILE* f, TileMapHeader& header);
     bool isHole(int row, int column) const;
 
