@@ -30,7 +30,7 @@ Worldsocket       | ✔️         | ✔️         | ✔️         | ✔️   
 Char Enum         | ✔️         | ✔️         | ✔️         | ✔️         | ✔️
 Log into world    | ✔️         | ✔️         | ✔️         | ✔️         | ✔️
 
-**MoP (5.4.8):** Entering the world and Pandaren character creation are implemented. Apply the world DB update `sql/world/updates/20260203-00_pandaren_playercreateinfo.sql` (playercreateinfo, playercreateinfo_items, worldmap_info for The Wandering Isle) so that Pandaren can log in and spawn on map 860.
+**MoP (5.4.8):** Entering the world and Pandaren character creation are implemented. Apply the world DB update `sql/world/updates/20260203-00_pandaren_playercreateinfo.sql` (playercreateinfo, playercreateinfo_items, worldmap_info for The Wandering Isle) so that Pandaren can log in and spawn on map 860. Some implementation was referenced from [TrinityCore](https://github.com/TrinityCore/TrinityCore).
 
 
 ## Contributing
